@@ -1,4 +1,4 @@
-@import-normalize; /* bring in normalize.css styles */
+@import-normalize;
 
 body {
   margin: 0;
@@ -12,4 +12,18 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+a {
+text-decoration: none;
+}
+button {
+  padding: 5px 20px;
+  margin: 10px;
+  cursor: pointer;
+}
+img {
+width: 200px;
+height: 250px;
+object-fit: cover;
+background-color: rgb(190, 190, 190);
 }

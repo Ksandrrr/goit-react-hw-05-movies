@@ -1,0 +1,14 @@
+.list {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+}
+.Cast {
+  height: 100px;
+box-shadow: 5px 5px 21px #6c6c6c,
+    -5px -5px 21px #ffffff;
+}
+.Cast a {
+display: block;
+margin: 5px;
+}

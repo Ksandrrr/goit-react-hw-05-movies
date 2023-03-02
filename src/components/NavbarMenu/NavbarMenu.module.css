@@ -1,0 +1,18 @@
+.NavbarLink {
+  font-size: 20px;
+  color: black;
+  margin: 20px 15px;
+}
+.NavbarLink:global(.active) {
+color: rgb(153, 255, 0);
+}
+.Header {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  background-color: red;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  font-weight: 700;
+  padding: 0 20px;
+}
