@@ -1,4 +1,4 @@
-import Style from "./Loader.module.css"
+
 
 export const Loader = () => {
 
