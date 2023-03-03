@@ -34,7 +34,7 @@ const MovieDetails = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [movieId]);
 
   const goBack = () => navigate(from);
 
