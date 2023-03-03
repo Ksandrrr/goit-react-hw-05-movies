@@ -27,7 +27,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from "react";
 import  NavbarMenu  from './NavbarMenu/NavbarMenu';
 
-import  HomePage  from './HomePage/HomePage';
+const  HomePage = lazy(() => import('./HomePage/HomePage'));
 const MoviesPage = lazy(() => import("./MoviesPage/MoviesPage"));
 const MovieDetails = lazy(() => import('./MovieDetails/MovieDetails'));
 const Cast = lazy(() => import('./Cast/Cast'));

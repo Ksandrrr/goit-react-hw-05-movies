@@ -2,27 +2,24 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchCast } from 'components/Shered/API/Movies';
 import Style from './Cast.module.css';
-import { Loader } from '../Shered/Loader/Loader';
+
 const Cast = () => {
-  const [cast, setCast] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
   const { movieId } = useParams();
+  const [cast, setCast] = useState([]);
 
+  
   useEffect(() => {
     const fetchData = async () => {
-      setIsLoading(true);
       try {
         const data = await fetchCast(movieId);
         setCast([...data.cast]);
       } catch (err) {
         console.log(err);
       } finally {
-        setIsLoading(false);
       }
     };
     fetchData();
-  }, []);
+  }, [movieId]);
   const element = cast.map(({ original_name, id, profile_path, character }) => {
     return (
       <li key={id}>
@@ -34,8 +31,8 @@ const Cast = () => {
         <p>{original_name}</p>
         <p>Character: {character}</p>
       </li>
-    );
+    ); 
   });
-  return <>{isLoading ? <Loader /> : element}</>;
+  return <>{cast.length > 0 ? element : <p>We dont have any reviews for this movie</p>}</>;
 };
 export default Cast;

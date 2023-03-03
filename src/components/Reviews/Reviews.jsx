@@ -6,6 +6,7 @@ const Reviews = () => {
   const [reviews, setReviews] = useState([]);
 
   const { movieId } = useParams();
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -14,7 +15,7 @@ const Reviews = () => {
       } catch (error) {}
     };
     fetchData();
-  }, []);
+  }, [movieId]);
 
   const element = reviews.map(({ id, author, content }) => {
     return (
@@ -25,7 +26,7 @@ const Reviews = () => {
     );
   });
 
-  return (
+  return ( 
     <>
       {reviews.length > 0 ? (
         element
