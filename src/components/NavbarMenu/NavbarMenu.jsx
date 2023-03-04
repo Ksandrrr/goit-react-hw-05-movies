@@ -1,4 +1,4 @@
-// import {link } from "react-router";
+
 import Style from './NavbarMenu.module.css';
 import { NavLink } from 'react-router-dom';
 const NavbarMenu = () => {
@@ -8,7 +8,7 @@ const NavbarMenu = () => {
         <NavLink to="/" className={Style.NavbarLink} href="">
           Home
         </NavLink>
-        <NavLink to="/Movies" className={Style.NavbarLink} href="">
+        <NavLink to="/movies" className={Style.NavbarLink} href="">
           Movies
         </NavLink>
       </nav>

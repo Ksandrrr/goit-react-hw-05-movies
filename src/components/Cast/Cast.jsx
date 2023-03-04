@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchCast } from 'components/Shered/API/Movies';
+import  {fetchCast}  from '../../Shered/api/movies';
 import Style from './Cast.module.css';
 
 const Cast = () => {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchReviews } from 'components/Shered/API/Movies';
+import { fetchReviews } from '../../Shered/api/movies';
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);

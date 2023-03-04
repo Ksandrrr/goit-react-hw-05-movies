@@ -6,14 +6,11 @@ import {
   Outlet,
 } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { fetchMovieID } from 'components/Shered/API/Movies';
+import { fetchMovieID } from '../../Shered/api/movies';
 import Style from './MovieDetails.module.css';
 const MovieDetails = () => {
-  const [image, setImage] = useState(``);
-  const [title, setTitle] = useState(``);
-  const [overview, setOverview] = useState(``);
-  const [genres, setGenres] = useState(``);
-  const [average, setAverage] = useState(0);
+
+  const [movieDetails, setMovieDetails] = useState([])
 
   const { movieId } = useParams();
   const navigate = useNavigate();
@@ -24,11 +21,7 @@ const MovieDetails = () => {
     const fetchData = async () => {
       try {
         const data = await fetchMovieID(movieId);
-        setImage(data.poster_path);
-        setTitle(data.title);
-        setOverview(data.overview);
-        setGenres([...data.genres]);
-        setAverage(data.vote_average.toFixed(1));
+        setMovieDetails(data);
       } catch (err) {
         console.log(err);
       }
@@ -39,8 +32,8 @@ const MovieDetails = () => {
   const goBack = () => navigate(from);
 
   const genresValue =
-    Array.isArray(genres) && genres.map(({ name }) => name).join(`, `);
-
+    Array.isArray(movieDetails.genres) && movieDetails.genres.map(({ name }) => name).join(`, `);
+const voteAverage = movieDetails.vote_average ? movieDetails.vote_average.toFixed(1) : '';
   return (
     <>
       <section>
@@ -48,16 +41,16 @@ const MovieDetails = () => {
         <ul className={Style.list}>
           <li>
             <img
-              src={`https://image.tmdb.org/t/p/original/${image}`}
-              alt={title}
+              src={`https://image.tmdb.org/t/p/original/${movieDetails.poster_path}`}
+              alt={movieDetails.title}
             />
           </li>
           <li>
-            <h3>{title}</h3>
-            <p>Vote average {average}/10</p>
+            <h3>{movieDetails.title}</h3>
+            <p>Vote average {voteAverage}/10</p>
 
             <h4>Ovirview</h4>
-            <p>{overview}</p>
+            <p>{movieDetails.overview}</p>
 
             <h5>Genres</h5>
             <p>{genresValue}</p>
@@ -66,7 +59,7 @@ const MovieDetails = () => {
         <ul className={Style.Cast}>
           <h4 className={Style.title}>Additial Information</h4>
           <li>
-            <Link to="cast">Genres</Link>
+            <Link to="cast">Cast</Link>
           </li>
           <li>
             <Link to="reviews">Reviews</Link>

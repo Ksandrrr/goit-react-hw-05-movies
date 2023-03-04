@@ -1,4 +1,5 @@
-import { fetchPopular } from '../Shered/API/Movies';
+
+import { fetchPopular } from '../../Shered/api/movies';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -9,7 +10,7 @@ const HomePage = () => {
     const fetchData = async () => {
       try {
         const data = await fetchPopular();
-        setPopularMovies([...data]);
+        setPopularMovies(data);
       } catch (err) {
         console.log(err);
       }
@@ -27,7 +28,9 @@ const HomePage = () => {
   return (
     <section>
       <h1>Trending today</h1>
+      <ul>
       {element}
+      </ul>
     </section>
   );
 };

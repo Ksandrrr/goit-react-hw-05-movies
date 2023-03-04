@@ -1,26 +1,22 @@
 import { useEffect, useState } from 'react';
-import { fetchSearchMovies } from 'components/Shered/API/Movies';
+import { fetchSearchMovies } from '../../Shered/api/movies';
 import { Link } from 'react-router-dom';
-import { Loader } from '../Shered/Loader/Loader';
 const MoviesPage = () => {
   const [search, setSearch] = useState(``);
   const [item, setItem] = useState([]);
   const [notFound, setNotFound] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+
 
   useEffect(() => {
     const fetchData = async () => {
       setNotFound(false);
-      setIsLoading(true);
       try {
         const data = await fetchSearchMovies(search);
-        setItem([...data.results]);
+        setItem(data.results);
         if (data.results.length === 0) {
           setNotFound(true);
         }
       } catch (err) {
-      } finally {
-        setIsLoading(false);
       }
     };
     if (search) {
@@ -46,7 +42,7 @@ const MoviesPage = () => {
         <button type="submit">Search</button>
       </form>
       <ul>
-        {isLoading ? <Loader /> : notFound ? <h3>Not Found</h3> : element}
+        {notFound ? <h3>Not Found</h3> : element}
       </ul>
     </section>
   );
